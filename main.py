@@ -4,7 +4,7 @@ import time
 
 
 # calulate vol % with OG and FG
-def _alk_vol():
+def alk_vol():
     og = entry_og_int.get()
     fg = entry_fg_int.get()
     result: float = (og - fg) * 0.132
@@ -34,7 +34,7 @@ entry_og = ttk.Entry(master=input_frame1, textvariable=entry_og_int)
 fg_lable = ttk.Label(master=input_frame2, text="FG: ", font="arial 14", foreground="white")
 entry_fg = ttk.Entry(master=input_frame2, textvariable=entry_fg_int) 
 
-button = ttk.Button(master=input_frame3, text="Calulate", command=_alk_vol, width=13)
+button = tk.Button(master=input_frame3, text="Calculate", command=alk_vol, width=16, font="arial 18")
 
 # pack to the master 
 og_lable.pack(pady=10, padx=10, side="left")
