@@ -1,28 +1,29 @@
 import tkinter as tk
-from tkinter import ttk
+import ttkbootstrap as ttk
 
 # calulate vol % with OG and FG
-def _alk_vol(og: float, fg: float) -> float:
-    return (og - fg) * 0.132
+def _alk_vol():
+    og = entry_og_int.get()
+    fg = entry_fg_int.get()
+    result = (int(og) - int(fg)) * 0.132
+    output_string.set(str(result))
 
 
 # Window
-window = tk.Tk()
+window = ttk.Window(themename="darkly")
 window.title("Python-brew-app")
 window.geometry("400x600")
-bg_color = "#232323"
-s = ttk.Style()
-s.configure("my_color", background=bg_color)
-window.configure(bg=bg_color)
 
 # Title
-tile_lable = ttk.Label(master=window, text="Calculate vol %", font="arial 26 bold", foreground="white", padding=10, background=bg_color)
+tile_lable = ttk.Label(master=window, text="Calculate vol %", font="arial 26 bold", foreground="white", padding=10)
 tile_lable.pack()
 
 # input fields
 input_frame = ttk.Frame(master=window)
-entry_og = ttk.Entry(master=input_frame, background=bg_color)
-entry_fg = ttk.Entry(master=input_frame, background=bg_color) 
+entry_og_int = tk.IntVar()
+entry_fg_int = tk.IntVar()
+entry_og = ttk.Entry(master=input_frame, textvariable=entry_og_int)
+entry_fg = ttk.Entry(master=input_frame, textvariable=entry_fg_int) 
 button = ttk.Button(master=input_frame, text="Calulate", command=_alk_vol)
 
 
@@ -32,7 +33,14 @@ button.pack(pady=20)
 input_frame.pack()
 
 # Output
-output_lable = ttk.Label(master=window,  text="Output: ", font="arial 20", foreground="white", background=bg_color,padding=10)
+output_string = tk.StringVar()
+output_lable = ttk.Label(
+    master=window,  
+    text="Output: ", 
+    font="arial 20", 
+    foreground="white", 
+    padding=10,
+    textvariable=output_string)
 output_lable.pack()
 
 # run main loop
