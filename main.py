@@ -20,22 +20,26 @@ tile_lable = ttk.Label(master=window, text="Calculate vol %", font="arial 26 bol
 tile_lable.pack()
 
 # input fields
-input_frame = ttk.Frame(master=window)
+input_frame1 = ttk.Frame(master=window)
+input_frame2 = ttk.Frame(master=window)
+input_frame3 = ttk.Frame(master=window)
 entry_og_int = tk.IntVar()
 entry_fg_int = tk.IntVar()
-og_lable = ttk.Label(master=input_frame, text="OG: ")
-entry_og = ttk.Entry(master=input_frame, textvariable=entry_og_int)
-fg_lable = ttk.Label(master=input_frame, text="FG: ")
-entry_fg = ttk.Entry(master=input_frame, textvariable=entry_fg_int) 
-button = ttk.Button(master=input_frame, text="Calulate", command=_alk_vol)
+og_lable = ttk.Label(master=input_frame1, text="OG: ")
+entry_og = ttk.Entry(master=input_frame1, textvariable=entry_og_int)
+fg_lable = ttk.Label(master=input_frame2, text="FG: ")
+entry_fg = ttk.Entry(master=input_frame2, textvariable=entry_fg_int) 
+button = ttk.Button(master=input_frame3, text="Calulate", command=_alk_vol)
 
-og_lable.pack()
-entry_og.pack(pady=20)
-fg_lable.pack()
-entry_fg.pack(pady=20)
+og_lable.pack(pady=10, padx=10, side="left")
+entry_og.pack(pady=10, side="left")
+fg_lable.pack(pady=10, padx=10, side="left")
+entry_fg.pack(pady=10, side="left")
 
 button.pack(pady=20)
-input_frame.pack()
+input_frame1.pack()
+input_frame2.pack()
+input_frame3.pack()
 
 # Output
 output_string = tk.StringVar()
